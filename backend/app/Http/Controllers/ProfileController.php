@@ -23,7 +23,6 @@ class ProfileController extends Controller
             'kelas' => 'required | string',
             'usia' => 'required | integer | min:2',
             'skills' => 'required | array',
-            // 'skills.*' => 'required | string | distinct'
         ]);
 
         if ($validator->fails()) {
@@ -56,7 +55,7 @@ class ProfileController extends Controller
         }
         // return $data;
 
-        return response()->json(['message' => 'data successfully added', compact('profile')], 200);
+        return response()->json(['message' => 'data successfully added', 'profile' => $profile], 200);
     }
 
     // Get All Profile Data
