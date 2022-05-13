@@ -6,6 +6,10 @@
 export default {
   name: "App",
   components: {},
+  created() {
+    localStorage.setItem("auth", false);
+    localStorage.setItem("permission", "noperms");
+  },
 };
 </script>
 

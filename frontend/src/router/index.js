@@ -1,7 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
+
+// Components
 import Home from "@/views/Home";
 import Login from "@/views/Auth/Login";
 import Register from "@/views/Auth/Register";
+import Dashboard from "@/views/Dashboard";
+import Profile from "@/views/Profile";
+import NotFound from "@/views/Action/404";
 
 const routes = [
   {
@@ -19,7 +24,33 @@ const routes = [
     name: "register",
     component: Register,
   },
-  { path: "*", redirect: "/" },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard,
+    meta: {
+      auth: true,
+      permission: "admin",
+    },
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: "/error",
+    name: "404",
+    component: NotFound,
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/error",
+  },
+
   // {
   //   path: '/about',
   //   name: 'about',

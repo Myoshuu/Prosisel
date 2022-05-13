@@ -82,7 +82,7 @@ export default {
           // }
         })
         .catch((err) => {
-          console.error(err.response.message);
+          console.log(err.response.message);
         });
     },
   },
@@ -171,6 +171,9 @@ a {
         transition: 0.2s ease-in-out;
 
         &:hover {
+          border: 1.8px solid black;
+        }
+        &:focus {
           border: 1.8px solid black;
         }
       }
