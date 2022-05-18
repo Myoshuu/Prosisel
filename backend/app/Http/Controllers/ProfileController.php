@@ -26,7 +26,7 @@ class ProfileController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['message' => 'invaild data'], 422);
+            return response()->json(['message' => 'invalid data'], 422);
         }
 
         $profile = new Profile();
@@ -39,7 +39,9 @@ class ProfileController extends Controller
         $profile_id = $profile->id;
         $skills = $request->skills;
 
+        // Make new collection
         $data = collect();
+        //
         foreach ($skills as $item) {
             $data->push($item);
             foreach ($data as $single) {

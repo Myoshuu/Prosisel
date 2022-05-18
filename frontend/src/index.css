@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --c:blue;
+}
+.nice-input::placeholder{
+  opacity: 0;
+}
+.nice-input{
+  z-index:-1;
+}
+.nice-input:not(:placeholder-shown) + .input-text,
+input:focus ~ .input-text{
+  @apply bg-white transform -translate-y-5 -translate-x-2 scale-75 opacity-100;
+}
+
+input:focus ~ .input-text{
+  @apply text-blue-500 
+}
+
+input:not(:focus) ~ .input-text{
+  @apply text-slate-500
+
+}
+
+/* .nice-input:not(:placeholder-shown) + .input-text,
+input:focus ~ .input-text{
+  transform: translate(5%,-75%) scale(75%);
+  background: white;
+}
+input:focus ~ .input-text{
+  z-index: 100;
+  color: blue;
+}
+input:not(:focus) ~ .input-text{
+  color: grey;
+} */
