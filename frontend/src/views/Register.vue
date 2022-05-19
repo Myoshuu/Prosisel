@@ -1,5 +1,12 @@
 <template>
   <div class="register border rounded-lg p-5">
+    <router-link
+      class="text-sm mb-2 text-blue-700 flex items-center gap-1"
+      :to="{ name: 'home' }"
+    >
+      <span class="text-xs"> <fa icon="chevron-left" /> </span>
+      <p>Back</p>
+    </router-link>
     <div class="text-2xl font-medium title">Register</div>
     <div class="text-md opacity-50 mb-5 title">
       Already have an account?

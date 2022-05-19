@@ -11,6 +11,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 
 library.add(fas);
 
+window.axios = require("axios");
+
 createApp(App)
   .use(store)
   .use(router)

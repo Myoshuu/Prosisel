@@ -17,38 +17,39 @@
           </div>
         </div>
       </nav>
-    </div>
 
-    <!-- Modal -->
-    <div
-      class="
-        modal
-        absolute
-        top-12
-        z-10
-        border
-        p-1
-        rounded-lg
-        bg-white
-        w-40
-        right-[15px]
-      "
-    >
+      <!-- Modal -->
       <div
         class="
-          flex
-          rounded-md
-          hover:bg-rose-400 hover:text-white
-          transition-colors
-          py-1
-          cursor-pointer
-          px-3
-          items-center
-          gap-2
+          modal
+          absolute
+          top-12
+          z-10
+          border
+          p-1
+          rounded-lg
+          bg-white
+          w-40
+          right-[15px]
         "
       >
-        <fa icon="arrow-right-to-bracket" />
-        <span>Logout</span>
+        <div
+          class="
+            flex
+            rounded-md
+            hover:bg-rose-400 hover:text-white
+            transition-colors
+            py-1
+            cursor-pointer
+            px-3
+            items-center
+            gap-2
+          "
+          @click="logout"
+        >
+          <fa icon="arrow-right-to-bracket" />
+          <span>Logout</span>
+        </div>
       </div>
     </div>
 
@@ -112,6 +113,10 @@ export default {
   methods: {
     toggle() {
       document.querySelector(".modal").classList.toggle("active");
+    },
+    logout() {
+      this.$store.dispatch("auth/logoutData");
+      this.token = null;
     },
   },
   components: { Button },
