@@ -6,11 +6,11 @@
 <script>
 export default {
   // Get token and set to headers
-  created() {
-    window.axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${localStorage.token}`;
-  },
+  // created() {
+  //   window.axios.defaults.headers.common[
+  //     "Authorization"
+  //   ] = `Bearer ${localStorage.token}`;
+  // },
 };
 </script>
 

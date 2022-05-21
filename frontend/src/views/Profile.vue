@@ -1,20 +1,19 @@
 <template>
   <div>
-    <nav class="p-3 flex items-center">
-      <div class="title mr-5">
-        <p class="text-lg text-black">Prosisel</p>
-      </div>
-      <div class="flex">
-        <div class="flex">
-          <router-link :to="{ name: 'profile' }">Profile</router-link>
-        </div>
-      </div>
-    </nav>
+    <Navbar />
   </div>
 </template>
 
 <script>
-export default {};
+import Navbar from "@/components/Navbar.vue";
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch("auth/logoutData");
+    },
+  },
+  components: { Navbar },
+};
 </script>
 
 <style>

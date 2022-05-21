@@ -15,11 +15,15 @@ const auth = {
         .then((res) => {
           router.push({ name: "home" });
           localStorage.setItem("token", res.data.token);
-          localStorage.setItem("role", res.data.user.status);
 
           window.axios.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${localStorage.token}`;
+
+          window.axios.get(`${state.url}/auth/me`).then((res) => {
+            localStorage.setItem("username", res.data.nama);
+            localStorage.setItem("status", res.data.status);
+          });
         })
         .catch((err) => {
           console.log(err.response.data.message);

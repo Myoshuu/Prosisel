@@ -25,7 +25,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->firstOrFail();
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['message' => 'login success', 'token' => $token, 'user' => $user], 200);
+        return response()->json(['message' => 'login success', 'token' => $token], 200);
     }
 
     public function register(Request $request)
@@ -55,6 +55,11 @@ class AuthController extends Controller
         ])->save();
 
         return response()->json(['message' => 'register success'], 200);
+    }
+
+    public function me()
+    {
+        return response()->json(auth()->user());
     }
 
     public function logout(Request $request)
