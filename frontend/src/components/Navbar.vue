@@ -78,12 +78,11 @@ export default {
 }
 .modal {
   opacity: 0;
-  z-index: -1000;
   transition: 0.2s ease-in-out;
 }
 
 .modal.active {
-  opacity: 1;
+  display: block;
   z-index: 1;
 }
 </style>

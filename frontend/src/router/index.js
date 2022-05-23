@@ -4,6 +4,7 @@ import Login from "@/views/Login";
 import Register from "@/views/Register";
 import Dashboard from "@/views/Dashboard";
 import Profile from "@/views/Profile";
+import NotFound from "@/views/NotFound";
 
 const routes = [
   {
@@ -25,11 +26,23 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: Dashboard,
+    meta: {
+      auth: true,
+      role: "admin",
+    },
   },
   {
     path: "/profile",
     name: "profile",
     component: Profile,
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "notfound",
+    component: NotFound,
   },
   // {
   //   path: '/about',
@@ -44,6 +57,16 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem("token");
+
+  if (to.matched.some((record) => record.meta.auth) && !loggedIn) {
+    next("/login");
+    return;
+  }
+  next();
 });
 
 export default router;

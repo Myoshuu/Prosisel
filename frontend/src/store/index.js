@@ -13,7 +13,6 @@ const auth = {
       window.axios
         .post(`${state.url}/auth/login`, user)
         .then((res) => {
-          router.push({ name: "home" });
           localStorage.setItem("token", res.data.token);
 
           window.axios.defaults.headers.common[
@@ -23,6 +22,13 @@ const auth = {
           window.axios.get(`${state.url}/auth/me`).then((res) => {
             localStorage.setItem("username", res.data.nama);
             localStorage.setItem("status", res.data.status);
+          });
+
+          router.push({ name: "home" }).then(() => {
+            // Eggy({
+            //   message: "Error",
+            //   type: "error",
+            // });
           });
         })
         .catch((err) => {
