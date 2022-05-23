@@ -22,20 +22,7 @@
         <div class="input-wrapper flex flex-col">
           <label for="email" class="relative">
             <input
-              class="
-                nice-input
-                border
-                rounded-lg
-                h-10
-                w-full
-                text-sm
-                p-2
-                border-black border-opacity-50
-                outline-none
-                focus:border-blue-500
-                transition
-                duration-200
-              "
+              class="nice-input border rounded-lg h-10 w-full text-sm p-2 border-black border-opacity-50 outline-none focus:border-blue-500 transition duration-200"
               type="email"
               name="email"
               id="email"
@@ -43,16 +30,7 @@
               v-model="user.email"
             />
             <span
-              class="
-                mx-3
-                text-md
-                top-2
-                absolute
-                left-0
-                transition
-                duration-200
-                input-text
-              "
+              class="mx-3 text-md top-2 absolute left-0 transition duration-200 input-text"
               >Email</span
             >
           </label>
@@ -62,20 +40,7 @@
         <div class="input-wrapper flex flex-col">
           <label for="password" class="relative">
             <input
-              class="
-                nice-input
-                border
-                rounded-lg
-                h-10
-                w-full
-                text-sm
-                p-2
-                border-black border-opacity-50
-                outline-none
-                focus:border-blue-500
-                transition
-                duration-200
-              "
+              class="nice-input border rounded-lg h-10 w-full text-sm p-2 border-black border-opacity-50 outline-none focus:border-blue-500 transition duration-200"
               type="password"
               name="password"
               id="password"
@@ -83,16 +48,7 @@
               v-model="user.password"
             />
             <span
-              class="
-                text-md
-                top-2
-                mx-3
-                absolute
-                left-0
-                transition
-                duration-200
-                input-text
-              "
+              class="text-md top-2 mx-3 absolute left-0 transition duration-200 input-text"
             >
               Password</span
             >
@@ -116,11 +72,14 @@ export default {
         email: "",
         password: "",
       },
+      message: "",
     };
   },
   methods: {
     login(user) {
       this.$store.dispatch("auth/loginData", user);
+      this.message = this.$store.state.message;
+      console.log(this.message);
     },
   },
   components: { Button },

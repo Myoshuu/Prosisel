@@ -21,31 +21,10 @@
 
     <!-- Modal -->
     <div
-      class="
-        modal
-        absolute
-        top-12
-        z-10
-        border
-        p-1
-        rounded-lg
-        bg-white
-        w-40
-        right-[15px]
-      "
+      class="modal absolute top-12 z-10 border p-1 rounded-lg bg-white w-40 right-[15px]"
     >
       <div
-        class="
-          flex
-          rounded-md
-          hover:bg-rose-400 hover:text-white
-          transition-colors
-          py-1
-          cursor-pointer
-          px-3
-          items-center
-          gap-2
-        "
+        class="flex rounded-md hover:bg-rose-400 hover:text-white transition-colors py-1 cursor-pointer px-3 items-center gap-2"
         @click="$emit('logout')"
       >
         <!-- ^^ like props (pass method to parent) -->
@@ -77,12 +56,15 @@ export default {
   height: 100vh;
 }
 .modal {
+  visibility: hidden;
   opacity: 0;
+  z-index: -1;
   transition: 0.2s ease-in-out;
 }
 
 .modal.active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
   z-index: 1;
 }
 </style>

@@ -1,11 +1,14 @@
 import { createStore } from "vuex";
 
+// Toast Library
+import { Eggy } from "@s-r0/eggy-js";
+
 // import window.axios from "window.axios";
 import router from "../router";
 
 const auth = {
   namespaced: true,
-  state: { user: {}, url: "http://localhost:8000/api" },
+  state: { user: {}, url: "http://localhost:8000/api", message: "" },
   getters: {},
   mutations: {},
   actions: {
@@ -20,19 +23,25 @@ const auth = {
           ] = `Bearer ${localStorage.token}`;
 
           window.axios.get(`${state.url}/auth/me`).then((res) => {
+            localStorage.setItem("role", res.data.status);
             localStorage.setItem("username", res.data.nama);
-            localStorage.setItem("status", res.data.status);
-          });
 
-          router.push({ name: "home" }).then(() => {
-            // Eggy({
-            //   message: "Error",
-            //   type: "error",
-            // });
+            router.push({ name: "home" }).then(async () => {
+              // Wait for role
+              const role = await localStorage.role;
+              Eggy({
+                title: "Login Success",
+                // Display Role
+                message: `Logged in as ${role}`,
+                type: "success",
+                duration: 3000,
+              });
+            });
           });
         })
         .catch((err) => {
-          console.log(err.response.data.message);
+          state.message = err.response.data.message;
+          console.log(state.message);
         });
     },
     registerData({ state }, user) {
